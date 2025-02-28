@@ -12,13 +12,14 @@ An application to track income and expenses, set budgets, and generate financial
 
 ## Technology Stack
 - **Backend**: Flask (Python)
-- **Frontend**: React, Angular, or Vue.js
+- **Frontend**: React
 - **Database**: SQLite
 
 ## Getting Started
 
 ### Prerequisites
 - Python 3.x
+- Node.js and npm
 - pip (Python package manager)
 
 ### Backend Setup
@@ -33,6 +34,20 @@ An application to track income and expenses, set budgets, and generate financial
 3. Run the Flask application:
    ```bash
    python app.py
+   ```
+
+### Frontend Setup
+1. Navigate to the `frontend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the React development server:
+   ```bash
+   npm start
    ```
 
 ### API Endpoints
@@ -66,7 +81,6 @@ An application to track income and expenses, set budgets, and generate financial
 
 ## Future Enhancements
 - Implement user authentication.
-- Add frontend using React, Angular, or Vue.js.
 - Enhance reporting and analytics features.
 
 ---
