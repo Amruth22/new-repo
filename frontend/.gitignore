@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+
+# testing
+/coverage
+
+# IDEs and editors
+/.idea
+/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw? 
