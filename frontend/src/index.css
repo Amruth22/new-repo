@@ -1,0 +1,17 @@
+html, body, #root {
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  color: #282c34;
+}
