@@ -4,11 +4,18 @@ import axios from 'axios';
 function CategoryManager() {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get('/categories')
-      .then(response => setCategories(response.data))
-      .catch(error => console.error('Error fetching categories:', error));
+      .then(response => {
+        setCategories(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+        setLoading(false);
+      });
   }, []);
 
   const addCategory = () => {
@@ -25,11 +32,13 @@ function CategoryManager() {
       <h2>Manage Categories</h2>
       <input type="text" placeholder="Category Name" value={name} onChange={e => setName(e.target.value)} />
       <button onClick={addCategory}>Add Category</button>
-      <ul>
-        {categories.map(category => (
-          <li key={category.id}>{category.name}</li>
-        ))}
-      </ul>
+      {loading ? <p className="loading">Loading categories...</p> : (
+        <ul>
+          {categories.map(category => (
+            <li key={category.id}>{category.name}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
