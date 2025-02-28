@@ -6,11 +6,18 @@ function BudgetManager() {
   const [amount, setAmount] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get('/budgets')
-      .then(response => setBudgets(response.data))
-      .catch(error => console.error('Error fetching budgets:', error));
+      .then(response => {
+        setBudgets(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching budgets:', error);
+        setLoading(false);
+      });
   }, []);
 
   const addBudget = () => {
@@ -31,11 +38,13 @@ function BudgetManager() {
       <input type="date" placeholder="Start Date" value={startDate} onChange={e => setStartDate(e.target.value)} />
       <input type="date" placeholder="End Date" value={endDate} onChange={e => setEndDate(e.target.value)} />
       <button onClick={addBudget}>Add Budget</button>
-      <ul>
-        {budgets.map(budget => (
-          <li key={budget.id}>${budget.amount} from {budget.start_date} to {budget.end_date}</li>
-        ))}
-      </ul>
+      {loading ? <p className="loading">Loading budgets...</p> : (
+        <ul>
+          {budgets.map(budget => (
+            <li key={budget.id}>${budget.amount} from {budget.start_date} to {budget.end_date}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
