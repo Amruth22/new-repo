@@ -7,11 +7,18 @@ function RecurringTransactionManager() {
   const [amount, setAmount] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [frequency, setFrequency] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get('/recurring')
-      .then(response => setRecurring(response.data))
-      .catch(error => console.error('Error fetching recurring transactions:', error));
+      .then(response => {
+        setRecurring(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching recurring transactions:', error);
+        setLoading(false);
+      });
   }, []);
 
   const addRecurringTransaction = () => {
@@ -34,11 +41,13 @@ function RecurringTransactionManager() {
       <input type="text" placeholder="Category ID" value={categoryId} onChange={e => setCategoryId(e.target.value)} />
       <input type="text" placeholder="Frequency" value={frequency} onChange={e => setFrequency(e.target.value)} />
       <button onClick={addRecurringTransaction}>Add Recurring Transaction</button>
-      <ul>
-        {recurring.map(r => (
-          <li key={r.id}>{r.name} - ${r.amount} ({r.frequency})</li>
-        ))}
-      </ul>
+      {loading ? <p className="loading">Loading recurring transactions...</p> : (
+        <ul>
+          {recurring.map(r => (
+            <li key={r.id}>{r.name} - ${r.amount} ({r.frequency})</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
