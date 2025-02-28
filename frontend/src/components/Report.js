@@ -5,15 +5,22 @@ import axios from 'axios';
 function Report() {
   const [expenses, setExpenses] = useState([]);
   const [income, setIncome] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/expenses')
-      .then(response => setExpenses(response.data))
-      .catch(error => console.error('Error fetching expenses:', error));
-
-    axios.get('/income')
-      .then(response => setIncome(response.data))
-      .catch(error => console.error('Error fetching income:', error));
+    Promise.all([
+      axios.get('/expenses'),
+      axios.get('/income')
+    ])
+    .then(([expensesResponse, incomeResponse]) => {
+      setExpenses(expensesResponse.data);
+      setIncome(incomeResponse.data);
+      setLoading(false);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    });
   }, []);
 
   const data = {
@@ -41,7 +48,7 @@ function Report() {
   return (
     <div>
       <h2>Financial Report</h2>
-      <Bar data={data} />
+      {loading ? <p className="loading">Loading report...</p> : <Bar data={data} />}
     </div>
   );
 }
