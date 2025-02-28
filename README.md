@@ -9,6 +9,8 @@ An application to track income and expenses, set budgets, and generate financial
 - Budgeting
 - Reports and Analytics
 - Responsive Design
+- Category Management
+- Recurring Transactions
 
 ## Technology Stack
 - **Backend**: Flask (Python)
@@ -52,28 +54,25 @@ An application to track income and expenses, set budgets, and generate financial
 
 ### API Endpoints
 
+#### Categories
+- `GET /categories`: Retrieve all categories.
+- `POST /categories`: Add a new category.
+
 #### Expenses
 - `GET /expenses`: Retrieve all expenses.
 - `POST /expenses`: Add a new expense.
-  - Request body:
-    ```json
-    {
-      "name": "Groceries",
-      "amount": 150.00,
-      "category": "Food"
-    }
-    ```
 
 #### Income
 - `GET /income`: Retrieve all income records.
 - `POST /income`: Add a new income record.
-  - Request body:
-    ```json
-    {
-      "source": "Salary",
-      "amount": 3000.00
-    }
-    ```
+
+#### Budgets
+- `GET /budgets`: Retrieve all budgets.
+- `POST /budgets`: Add a new budget.
+
+#### Recurring Transactions
+- `GET /recurring`: Retrieve all recurring transactions.
+- `POST /recurring`: Add a new recurring transaction.
 
 ### Database
 - The application uses SQLite for storing expenses and income data.
