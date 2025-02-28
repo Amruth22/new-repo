@@ -15,3 +15,14 @@ li {
 h2 {
   color: #282c34;
 }
+
+.loading {
+  font-size: 18px;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+}
