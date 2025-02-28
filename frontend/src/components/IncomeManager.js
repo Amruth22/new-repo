@@ -5,11 +5,18 @@ function IncomeManager() {
   const [income, setIncome] = useState([]);
   const [source, setSource] = useState('');
   const [amount, setAmount] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get('/income')
-      .then(response => setIncome(response.data))
-      .catch(error => console.error('Error fetching income:', error));
+      .then(response => {
+        setIncome(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching income:', error);
+        setLoading(false);
+      });
   }, []);
 
   const addIncome = () => {
@@ -28,11 +35,13 @@ function IncomeManager() {
       <input type="text" placeholder="Source" value={source} onChange={e => setSource(e.target.value)} />
       <input type="number" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} />
       <button onClick={addIncome}>Add Income</button>
-      <ul>
-        {income.map(inc => (
-          <li key={inc.id}>{inc.source} - ${inc.amount}</li>
-        ))}
-      </ul>
+      {loading ? <p className="loading">Loading income...</p> : (
+        <ul>
+          {income.map(inc => (
+            <li key={inc.id}>{inc.source} - ${inc.amount}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
