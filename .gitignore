@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite3
+*.db
+
+# Build
+build/
+
+# Coverage
+coverage/
+
+# Misc
+.DS_Store
+*.swp
