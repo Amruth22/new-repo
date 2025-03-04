@@ -1,74 +1,185 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f4f4f9;
-  color: #333;
-}
-
+/* Base App styles */
 .App {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 20px;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+/* Skip to main content link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
   color: white;
-  margin-bottom: 20px;
+  padding: 8px;
+  z-index: 100;
 }
 
-input {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: calc(100% - 24px);
-  max-width: 300px;
+.skip-link:focus {
+  top: 0;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #61dafb;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 5px;
+/* Improved focus styles for keyboard navigation */
+:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
 }
 
-button:hover {
-  background-color: #21a1f1;
+/* Ensure sufficient color contrast */
+.text-contrast-safe {
+  color: #333;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.bg-contrast-safe {
+  background-color: #f8f9fa;
 }
 
-li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+/* Responsive font sizes using rem */
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 h2 {
-  color: #282c34;
+  font-size: 1.75rem;
 }
 
-.loading {
-  font-size: 18px;
-  color: #888;
+h3 {
+  font-size: 1.5rem;
 }
 
-@media (max-width: 600px) {
-  .App {
-    padding: 10px;
+h4 {
+  font-size: 1.25rem;
+}
+
+p, li, button, input, select, textarea {
+  font-size: 1rem;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+/* Ensure form elements are accessible */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Ensure buttons have sufficient padding for touch targets */
+button {
+  padding: 0.5rem 1rem;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Ensure links are understandable */
+a {
+  text-decoration: underline;
+}
+
+/* Ensure tables are accessible */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+th, td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+/* Ensure form labels are associated with inputs */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Ensure error messages are clear */
+.error-message {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+/* Ensure success messages are clear */
+.success-message {
+  color: #388e3c;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+/* Ensure required fields are marked */
+.required::after {
+  content: " *";
+  color: #d32f2f;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
   }
+  
+  button {
+    padding: 0.75rem 1rem;
+  }
+}
 
-  input, button {
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+  
+  button {
     width: 100%;
-    max-width: none;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Support for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Support for prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  body:not(.light-theme) {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  body:not(.light-theme) a {
+    color: #90caf9;
+  }
+  
+  body:not(.light-theme) .text-contrast-safe {
+    color: #e0e0e0;
+  }
+  
+  body:not(.light-theme) .bg-contrast-safe {
+    background-color: #1e1e1e;
   }
 }
