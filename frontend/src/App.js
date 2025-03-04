@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import './styles/responsive.css';
+import './styles/mobile-nav.css';
 import ExpenseManager from './components/ExpenseManager';
 import IncomeManager from './components/IncomeManager';
 import CategoryManager from './components/CategoryManager';
