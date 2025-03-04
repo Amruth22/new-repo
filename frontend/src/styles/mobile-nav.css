@@ -1,0 +1,153 @@
+/* Mobile navigation styles */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.mobile-nav-item span {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.mobile-nav-item small {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.mobile-nav-item.active span,
+.mobile-nav-item span.active {
+  color: #4a90e2;
+}
+
+.mobile-nav-item.active small {
+  color: #4a90e2;
+  font-weight: 500;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-toggler {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.navbar-collapse {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.nav-item.active .nav-link,
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar navigation */
+.nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 0;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.list-item.active .nav-btn {
+  color: #4a90e2;
+  font-weight: 500;
+}
+
+.nav-btn:hover {
+  color: #4a90e2;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+  .navbar-collapse {
+    width: auto;
+    margin-top: 0;
+  }
+  
+  .navbar-nav {
+    flex-direction: row;
+  }
+  
+  .nav-item {
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+  }
+  
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Add padding to the bottom of the page on mobile to account for the fixed navigation */
+@media (max-width: 767.98px) {
+  body {
+    padding-bottom: 4rem;
+  }
+}
